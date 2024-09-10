@@ -1,0 +1,48 @@
+@tailwind base;
+@layer base {
+    .h1{
+        @apply text-h1 font-h1;
+    }
+    .h2 {
+        @apply text-h2 font-h2;
+    }
+    .h3 {
+        @apply text-h3 font-h3;
+    }
+    .h4 {
+        @apply text-h4 font-h4;
+    }
+    .h5 {
+        @apply text-h5 font-h5;
+    }
+    .sub1 {
+        @apply text-sub1 font-sub1;
+    }
+    .sub2 {
+        @apply text-sub2 font-sub2;
+    }
+    .body1 {
+        @apply text-body1 font-body1;
+    }
+    .body2 {
+        @apply text-body2 font-body2;
+    }
+    .body3 {
+        @apply text-body3 font-body3;
+    }
+    .button40 {
+        @apply text-button40 font-button40;
+    }
+    .button64 {
+        @apply text-button64 font-button64;
+    }
+    .label1 {
+        @apply text-label1 font-label1;
+    }
+    .label2 {
+        @apply text-label2 font-label2;
+    }
+    .tooltips {
+        @apply text-tooltips font-tooltips;
+    }
+}

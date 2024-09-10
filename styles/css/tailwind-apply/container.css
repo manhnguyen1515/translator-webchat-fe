@@ -1,0 +1,6 @@
+@tailwind base;
+@layer base {
+    .container-custom {
+        @apply px-1r phone:px-2r laptop:container desktop:px-8r;
+    }
+}

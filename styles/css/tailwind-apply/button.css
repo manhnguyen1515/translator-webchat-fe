@@ -1,0 +1,24 @@
+@tailwind base;
+@layer base {
+    .btn-sm {
+        @apply h-2r px-1r text-button32 font-button32;
+    }
+    .btn-md {
+        @apply h-2.5r px-1.5r text-button40 font-button40;
+    }
+    .btn-lg {
+        @apply h-4r px-2r text-button64 font-button40;
+    }
+    .btn-contained {
+        @apply whitespace-nowrap bg-blue-secondary text-white font-700 tracking-2 transition duration-300 hover:bg-blue-primary active:bg-blue-dark30 disabled:bg-neutral-light70;
+    }
+    .btn-outlined {
+        @apply whitespace-nowrap bg-transparent text-blue-secondary font-700 tracking-2 border border-neutral-light70 transition duration-300  hover:bg-blue-light30 active:bg-blue-light60  disabled:text-neutral-light70 disabled:bg-transparent;
+    }
+    .btn-text {
+        @apply whitespace-nowrap bg-transparent text-blue-secondary font-400 tracking-2 transition duration-300 hover:font-700 active:underline disabled:text-neutral-light90 disabled:font-400;
+    }
+    .btn-nav-carousel{
+        @apply bg-blue-secondary rounded-full w-5r h-5r ring-blue-light60 ring-4 text-white hover:bg-blue-primary active:bg-blue-dark30 transform transition duration-100 active:scale-95 flex items-center justify-center
+    }
+}

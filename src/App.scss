@@ -1,0 +1,86 @@
+// @import 'antd/dist/antd.css';
+a:hover {
+  color: unset;
+}
+
+.map-container .leaflet-control-container .leaflet-control-attribution {
+  display: none;
+}
+
+.map-container .leaflet-control-zoom {
+  opacity: 0.8;
+  margin-right: 8px !important;
+  margin-bottom: 64px !important;
+  border: 0 !important;
+}
+
+.map-container .leaflet-control-zoom-in {
+  width: 40px !important;
+  height: 40px !important;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-top-right-radius: 4px !important;
+  border-top-left-radius: 4px !important;
+}
+
+.map-container .leaflet-control-zoom-in:hover {
+  width: 40px !important;
+  height: 40px !important;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.map-container .leaflet-control-zoom-out {
+  width: 40px !important;
+  height: 40px !important;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  border-bottom: 0 !important;
+  border-bottom-right-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+}
+
+.map-container .leaflet-control-zoom-out:hover {
+  width: 40px !important;
+  height: 40px !important;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.password > input {
+  background-color: rgb(244 244 245);
+}
+
+.input-password > .ant-input-suffix {
+  display: none;
+}
+
+.confirm-otp > .ant-input {
+  height: 88px;
+  max-width: none;
+  border-radius: 0;
+  background-color: #F4F4F5;
+  border-color: #A0A1AB;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+}
+
+.otp-has-value {
+  background-color: white !important;
+}
+
+.otp-done > .ant-input {
+  background-color: #E4F7EA !important;
+  border-color: #11CE52 !important;
+}
+
+.otp-failed > .ant-input {
+  background-color: white !important;
+  border-color: #F03F3F !important;
+  color: #F03F3F !important;
+}
