@@ -54,7 +54,6 @@ const LoginForm: React.FunctionComponent<ILoginFormProps> = (props) => {
     try {
       const result = await UserService.login(accountLogin)
       if (result.status === HttpStatusCode.Ok) {
-        // console.log("---~~~", result.data.data)
         setUserInfo(result.data.data)
         navigate(PAGE_DEFAULT)
       }

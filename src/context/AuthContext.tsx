@@ -1,10 +1,8 @@
 import * as React from "react";
 import { createContext, useContext } from "react";
-import { TUserInfo, TUserLogin, IUserLoginOutput } from "../constants/types";
-import { FAKE_LIST_USER, FAKE_USER_INFO, LS_ACCESS_TOKEN, LS_REFRESH_TOKEN, PAGE_DEFAULT, PAGE_SIGN_IN } from "../constants/constant";
+import { TUserLogin } from "../constants/types";
+import { LS_ACCESS_TOKEN, LS_REFRESH_TOKEN, PAGE_DEFAULT, PAGE_SIGN_IN } from "../constants/constant";
 import { useNavigate } from "react-router-dom";
-import http from "../http-common";
-import axios from "axios";
 
 interface IAuthContext {
   userInfo: TUserLogin | undefined;
@@ -24,18 +22,16 @@ const AuthProvider: React.FC = ({ children }) => {
       navigate(PAGE_SIGN_IN)
     } else if (userInfo) {
       setToken(userInfo.accessToken)
-      console.log("set token: ", userInfo.accessToken)
       localStorage.setItem(LS_ACCESS_TOKEN, userInfo.accessToken)
       navigate(PAGE_DEFAULT)
     }
   }, [userInfo]);
 
   const logout = () => {
-    console.log("______logout")
+    navigate(PAGE_SIGN_IN)
     setUserInfo(undefined)
     localStorage.removeItem(LS_ACCESS_TOKEN);
     localStorage.removeItem(LS_REFRESH_TOKEN);
-    navigate(PAGE_SIGN_IN)
   }
 
   return (

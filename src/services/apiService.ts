@@ -31,7 +31,6 @@ async function renewToken() {
         const response = await ApiService.refreshToken(refreshPayload);
         token = response.data.accessToken;
         newRefreshToken = response.data.refreshToken;
-        console.log("set token renew: ", token)
         localStorage.setItem(LS_REFRESH_TOKEN, newRefreshToken)
         localStorage.setItem(LS_ACCESS_TOKEN, token)
     } catch (error) {

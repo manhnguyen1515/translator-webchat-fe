@@ -18,11 +18,9 @@ const instance = axios.create({
 
 instance.interceptors.request.use(
   (config) => {
-    // console.log("set header: ", localStorage.getItem(LS_ACCESS_TOKEN))
     const token = localStorage.getItem(LS_ACCESS_TOKEN);
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
-      // console.log("config: ", config.headers)
     }
     return config;
   },
@@ -31,7 +29,6 @@ instance.interceptors.request.use(
 let refreshingFunc: any = undefined;
 instance.interceptors.response.use(
   (response) => {
-    // console.log("---------response: ", response)
     if (response.status === 200) {
       return response;
     } else {
@@ -46,8 +43,6 @@ instance.interceptors.response.use(
     }
   },
   async (error) => {
-    // console.log(axios.defaults.headers)
-    // console.log("---------error: ", error)
     const originalConfig = error.config;
     const token = localStorage.getItem(LS_ACCESS_TOKEN);
 
@@ -57,8 +52,6 @@ instance.interceptors.response.use(
     }
     try {
       if (ApiService.isUnauthorizedError(error)) {
-        // console.log("-----expire token")
-        // the trick here, that `refreshingFunc` is global, e.g. 2 expired requests will get the same function pointer and await same function.
         if (!refreshingFunc)
           refreshingFunc = ApiService.renewToken();
 

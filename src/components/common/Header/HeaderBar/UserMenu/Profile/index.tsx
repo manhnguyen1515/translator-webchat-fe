@@ -10,9 +10,6 @@ const Profile: React.FunctionComponent<IProfileProps> = ({ ...props }) => {
         // alert("click")
         setIsModalOpen(true)
     }
-    React.useEffect(() => {
-        console.log(isModalOpen)
-    }, [isModalOpen])
     return <>
         <div className='w-[100px] h-[2rem] flex items-center' onClick={onOpenModal}>
             <div>Profile</div>

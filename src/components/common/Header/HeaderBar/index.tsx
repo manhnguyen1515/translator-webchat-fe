@@ -1,8 +1,5 @@
 import * as React from 'react';
-import SearchOutline from '../../../Icons/SearchOutline';
-import { Neutral } from '../../../../constants/colors';
-import { Body2 } from '../../../Text';
-import { FAKE_LIST_USER, LOGO_IMAGE_WHITE, LS_ACCESS_TOKEN } from '../../../../constants/constant';
+import { LOGO_IMAGE_WHITE } from '../../../../constants/constant';
 import UserMenu from './UserMenu';
 import ChatService from '../../../../services/chatServices';
 import axios, { AxiosError } from 'axios';
@@ -52,23 +49,11 @@ const HeaderBar: React.FunctionComponent<IHeaderBarProps> = (props) => {
                             label: data.nickname,
                             value: data.username
                         }]
-                        // console.log("----", converted)
                         setFriends(converted)
                     }
                 } catch (error: any | AxiosError) {
                     if (axios.isAxiosError(error)) {
-                        //   setIsEnable(false)
-                        //   if (error.response?.status === HttpStatusCode.NotFound) {
-                        //     const errorCode = parseInt(error.response.data)
-                        //     if (errorCode === eLoginError.UserNotFound) {
-                        //       setIsError(true)
-                        //       return
-                        //     }
-                        //     if (errorCode === eLoginError.InvalidPassword) {
-                        //       setIsPassError(true)
-                        //       return
-                        //     }
-                        //   }
+                        console.error(error);
                     }
                 }
             }

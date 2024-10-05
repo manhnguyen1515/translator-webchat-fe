@@ -47,9 +47,7 @@ const ChangePassword: React.FunctionComponent<IChangePasswordProps> = ({ isOpen,
                 oldPassword,
                 newPassword: password
             }
-            console.log("----changeInput: ", changeInput)
             const result = await UserService.changePassword(changeInput)
-            console.log("----change: ", result)
             if (result) {
                 setIsOpen(false)
             }
