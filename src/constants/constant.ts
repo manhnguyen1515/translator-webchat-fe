@@ -1,7 +1,7 @@
 import { randomColor } from "../utils/helper"
 import { TMessageData, TUserInfo, TUserLogin, eRegion } from "./types"
 
-export const API_URL = "http://localhost:8080"
+export const API_URL = "https://translator-webchat-be-production.up.railway.app"
 export const LS_ACCESS_TOKEN = "@accessToken"
 export const LS_REFRESH_TOKEN = "@refreshToken"
 export const PAGE_CHANGE_PASSWORD_EMAIL = "/changePw/email"
@@ -11,10 +11,10 @@ export const PAGE_SIGN_IN = "/signin"
 export const PAGE_TEST = "/test"
 export const PAGE_DEFAULT = "/*"
 export const LOGIN_TITLE = 'Log in'
-export const LOGIN_SUBTITLE = 'Likelion translate chat helps you connect and improve your business.'
+export const LOGIN_SUBTITLE = 'Autotranslator web chat helps you connect and improve your business.'
 export const LOGIN_BG_IMAGE = '/LoginPage.jpg'
-export const LOGO_IMAGE_BLACK = '/LogoBlack.png'
-export const LOGO_IMAGE_WHITE = '/LogoWhite.png'
+export const LOGO_IMAGE_BLACK = '/Logo.png'
+export const LOGO_IMAGE_WHITE = '/Logo.png'
 export const THRESH_NO_CONTENT_IMG = '/NoContentImg.png'
 export const LOGIN_USER_IDENTIFIER_TITLE = 'Email / Username'
 export const LOGIN_USER_IDENTIFIER_PLACEHOLDER = 'Email or Username'
@@ -37,10 +37,10 @@ export const REGISTER_EMAIL_PLACEHOLDER = 'Ex: lilkelion@gmail.com'
 export const REGISTER_WRONG_EMAIL_TEXT = 'Incorrect email or username. Please try again.'
 export const REGISTER_EXISTED_EMAIL_TEXT = 'An account with this email address already exists. Please try again.'
 export const REGISTER_USERNAME_TITLE = 'Username'
-export const REGISTER_USERNAME_PLACEHOLDER = 'Ex: likelion@gmail.com'
+export const REGISTER_USERNAME_PLACEHOLDER = 'Ex: abc@gmail.com'
 export const REGISTER_WRONG_USERNAME_TEXT = 'An account with this username already exists. Please try again.'
 export const REGISTER_NICKNAME_TITLE = 'Nickname'
-export const REGISTER_NICKNAME_PLACEHOLDER = 'Ex: likelion24'
+export const REGISTER_NICKNAME_PLACEHOLDER = 'Ex: banana'
 export const REGISTER_WRONG_NICKNAME_TEXT = `Nickname cannot contain 'admin' word. Please try again.`
 export const REGISTER_PASS_TITLE = 'Password'
 export const REGISTER_PASS_PLACEHOLDER = 'Password'
@@ -55,7 +55,7 @@ export const RESP_STATUS_CODE_USER_ERROR = 409
 export const DEFAULT_USER_COLOR = randomColor()
 export const PROFILE_MODAL_TITLE = 'User profile'
 export const CHANGE_PW_EMAIL_TITLE = 'Forgot Password'
-export const CHANGE_PW_EMAIL_SUBTITLE = 'Please enter the email you use to sign in to Likelion chat.'
+export const CHANGE_PW_EMAIL_SUBTITLE = 'Please enter the email you use to sign in to Autotranslator web chat.'
 export const CHANGE_PW_NEW_TITLE = 'Reset your Password'
 export const CHANGE_PW_NEW_SUBTITLE = `Please create a new password that you don't use on any other site.`
 export const CHANGE_PW_OTP_TITLE = 'Confirm OTP'
