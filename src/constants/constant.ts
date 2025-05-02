@@ -1,7 +1,7 @@
 import { randomColor } from "../utils/helper"
 import { TUserInfo, TUserLogin, eRegion } from "./types"
 
-export const API_URL = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://translator-webchat-be-production.up.railway.app"
+export const API_URL = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://translator-webchat-be-vtc9.onrender.com"
 export const LS_ACCESS_TOKEN = "@accessToken"
 export const LS_REFRESH_TOKEN = "@refreshToken"
 export const PAGE_CHANGE_PASSWORD_EMAIL = "/changePw/email"
