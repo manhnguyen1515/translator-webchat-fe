@@ -122,8 +122,9 @@ export type TUserCreateOutput = {
 }
 
 export enum eRegion {
-  VN = "Vietnam",
-  KR = "Korea"
+  VI = "Vietnam",
+  JA = "Japanese",
+  EN = "English",
 }
 
 export type TVerifyOtpInput = {
@@ -185,9 +186,9 @@ export type TMessageData = {
   messageId: string | number
   date: Date
   status: 'waiting' | 'sent' | 'received' | 'read'
-  text: string
+  textEn: string
   textVi: string
-  textKo: string
+  textJa: string
   userId: string
 }
 
@@ -202,9 +203,9 @@ export type TMessageResponse = {
   id: string;
   sender: string;
   recipient: string;
-  content: string;
+  contentEn: string;
   contentVi: string;
-  contentKo: string;
+  contentJa: string;
   createdAt: Date;
   updatedAt: Date;
 }

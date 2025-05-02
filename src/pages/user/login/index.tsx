@@ -24,7 +24,6 @@ const LoginForm: React.FunctionComponent<ILoginFormProps> = (props) => {
   const [isPassError, setIsPassError] = React.useState<boolean>(false)
   const [isEnable, setIsEnable] = React.useState<boolean>(false)
   const { setUserInfo } = React.useContext(AuthContext)!
-  // const authContext = useAuth();
   const onChangeUserIdentifier = (v: string) => {
     setUserIdentifier(v)
     if (isError) setIsError(false)

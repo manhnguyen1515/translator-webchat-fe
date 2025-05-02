@@ -2,6 +2,8 @@ import * as React from 'react';
 import { MessageBox } from 'react-chat-elements';
 import { TMessage, eRegion } from '../../../../constants/types';
 import { useSearchParams } from 'react-router-dom';
+import { ChatContext } from '../../../../context/ChatContext';
+import ComponentService from '../../../../services/shared/componentService';
 
 interface IChatMesgProps {
     input: TMessage
@@ -9,18 +11,17 @@ interface IChatMesgProps {
 
 const ChatMesg: React.FunctionComponent<IChatMesgProps> = ({ input }) => {
     const [searchParams] = useSearchParams();
-    const [text, setText] = React.useState<string>(input.data.text);
+    const { selectedUser } = React.useContext(ChatContext)!;
+    const regionValue = selectedUser?.user.regionCountry;
     const language = searchParams.get('language');
+    const regionKey = Object.entries(eRegion).find(([_, value]) => value === regionValue)?.[0]?.toLowerCase();
+
+    const region: eRegion =  ComponentService.getRegionFromString(language || regionKey || 'en') as eRegion;
+    const [text, setText] = React.useState<string>("");
 
     React.useEffect(() => {
-        if (language === eRegion.VN) {
-            setText(input.data.textVi);
-        } else if (language === eRegion.KR) { 
-            setText(input.data.textKo);
-        } else {
-            setText(input.data.text);
-        }
-    }, [input.data.textKo, input.data.textVi, language])
+        setText(ComponentService.getMessageData(input.data, region));
+    }, [input.data.textJa, input.data.textVi, input.data.textEn, region, input.data])
 
     return <>
         <div>

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { TUserInfo, TUserInfoDesign } from '../../../../../constants/types';
+import { TUserInfoDesign } from '../../../../../constants/types';
 import { Body3 } from '../../../../Text';
 import DefaultUser from '../../../../Icons/DefaultUser';
-import { randomColor } from '../../../../../utils/helper';
 import { ChatContext } from '../../../../../context/ChatContext';
 
 interface IDMUserProps {
