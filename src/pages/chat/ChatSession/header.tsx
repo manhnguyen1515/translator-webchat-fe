@@ -5,6 +5,7 @@ import { Body1, Body3 } from '../../../components/Text';
 import { Select } from 'antd';
 import { regions } from '../../user/register';
 import { useSearchParams } from 'react-router-dom';
+import { ChatContext } from '../../../context/ChatContext';
 
 interface IChatHeaderProps {
     user: TUserInfoDesign
@@ -12,22 +13,14 @@ interface IChatHeaderProps {
 
 const ChatHeader: React.FunctionComponent<IChatHeaderProps> = ({ user }) => {
     const [searchParams, setSearchParams] = useSearchParams();
-    const languages = [...regions, {
-        value: "Default",
-        label: "Default",
-    }];
+    const { selectedUser } = React.useContext(ChatContext)!;
 
     const updateQueryString = (key: string, value: string) => {
         searchParams.set(key, value);
         setSearchParams(searchParams);
       };
     const handleChangeLanguage = (e: any) => {
-        if (e === "Default") {
-            searchParams.delete("language");
-            setSearchParams(searchParams);
-        } else {
-            updateQueryString("language", e)
-        }
+        updateQueryString("language", e)
     }
 
     return <>
@@ -35,13 +28,13 @@ const ChatHeader: React.FunctionComponent<IChatHeaderProps> = ({ user }) => {
             <DefaultUser color={user.design.color} />
             <Body1 className={`text-[#1D1C1D] `}>{user.user.nickname}</Body1>
             <Select
-                placeholder={"Choose Language"}
+                placeholder={selectedUser?.user.regionCountry || "Select Language"}
                 optionFilterProp="label"
                 onChange={handleChangeLanguage}
-                options={languages}
+                options={regions}
                 className='mb-[0.5rem] h-[3rem]'
                 labelRender={(i) => {
-                    return <Body3 className='text-[18px]'>{i.value}</Body3>
+                    return <Body3 className='text-[18px]'>{i.label}</Body3>
                 }}
                 size='large'
             />

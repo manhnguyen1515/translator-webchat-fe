@@ -1,7 +1,7 @@
 import { randomColor } from "../utils/helper"
-import { TMessageData, TUserInfo, TUserLogin, eRegion } from "./types"
+import { TUserInfo, TUserLogin, eRegion } from "./types"
 
-export const API_URL = "https://translator-webchat-be-production.up.railway.app"
+export const API_URL = process.env.NODE_ENV === "development" ? "http://localhost:8080" : "https://translator-webchat-be-production.up.railway.app"
 export const LS_ACCESS_TOKEN = "@accessToken"
 export const LS_REFRESH_TOKEN = "@refreshToken"
 export const PAGE_CHANGE_PASSWORD_EMAIL = "/changePw/email"
@@ -68,109 +68,107 @@ export const OTP_TITLE = 'Please enter OTP here'
 export const CHANGE_PW_WRONG_OTP_TEXT = 'Incorrect OTP. Please try again.'
 export const CHANGE_PW_WRONG_OTP_PLACEHOLDER = 'Ex: 123456'
 export const PAGE_CHAT_SESSION = "/chat"
-export const SUPPORT_LANGUAGE = ["Vietnamese", "Korean"];
+export const SUPPORT_LANGUAGE = ["Vietnamese", "Japnese", "English"];
 
 export const FAKE_LIST_USER: TUserInfo[] = [
     {
         userId: "id1",
         email: "1@gmail.com",
         nickname: "nickname1",
-        regionCountry: eRegion.VN,
+        regionCountry: eRegion.VI,
         username: "username1"
     },
     {
         userId: "id2",
         email: "2@gmail.com",
         nickname: "nickname2",
-        regionCountry: eRegion.VN,
+        regionCountry: eRegion.VI,
         username: "username2"
     },
     {
         userId: "id3",
         email: "3@gmail.com",
         nickname: "nickname3",
-        regionCountry: eRegion.VN,
+        regionCountry: eRegion.VI,
         username: "username3"
     },
     {
         userId: "id4",
         email: "4@gmail.com",
         nickname: "nickname4",
-        regionCountry: eRegion.KR,
+        regionCountry: eRegion.JA,
         username: "username4"
     },
     {
         userId: "id5",
         email: "5@gmail.com",
         nickname: "nickname5",
-        regionCountry: eRegion.KR,
+        regionCountry: eRegion.JA,
         username: "username5"
     },
     {
         userId: "id6",
         email: "6@gmail.com",
         nickname: "nickname6",
-        regionCountry: eRegion.KR,
+        regionCountry: eRegion.JA,
         username: "username6"
     }
 ]
-
-export const FAKE_MESSAGE: TMessageData[] = [
-    {
-        messageId: 1,
-        date: new Date("2024-07-05T03:24:00"),
-        status: 'sent',
-        text: 'Tin nhan 1',
-        textVi: 'Tin nhan 1',
-        textKo: '소식 1',
-        userId: 'id1'
-    },
-    {
-        messageId: 2,
-        date: new Date("2024-07-05T03:25:00"),
-        status: 'sent',
-        text: 'Tin nhan 2',
-        textVi: 'Tin nhan 2',
-        textKo: '소식 2',
-        userId: 'id2'
-    },
-    {
-        messageId: 3,
-        date: new Date("2024-07-05T03:26:00"),
-        status: 'sent',
-        text: 'Tin nhan 3',
-        textVi: 'Tin nhan 3',
-        textKo: '소식 3',
-        userId: 'id1'
-    },
-    {
-        messageId: 4,
-        date: new Date("2024-07-05T03:27:00"),
-        status: 'sent',
-        text: 'Tin nhan 4',
-        textVi: 'Tin nhan 4',
-        textKo: '소식 4',
-        userId: 'id2'
-    },
-    {
-        messageId: 5,
-        date: new Date("2024-07-05T03:26:00"),
-        status: 'sent',
-        text: 'Tin nhan 5',
-        textVi: 'Tin nhan 5',
-        textKo: '소식 5',
-        userId: 'id1'
-    },
-    {
-        messageId: 6,
-        date: new Date("2024-07-05T03:27:00"),
-        status: 'sent',
-        text: 'Tin nhan 6',
-        textVi: 'Tin nhan 6',
-        textKo: '소식 6',
-        userId: 'id2'
-    }
-] 
+//     {
+//         messageId: 1,
+//         date: new Date("2024-07-05T03:24:00"),
+//         status: 'sent',
+//         textEn: 'Tin nhan 1',
+//         textVi: 'Tin nhan 1',
+//         textJa: '소식 1',
+//         userId: 'id1'
+//     },
+//     {
+//         messageId: 2,
+//         date: new Date("2024-07-05T03:25:00"),
+//         status: 'sent',
+//         text: 'Tin nhan 2',
+//         textVi: 'Tin nhan 2',
+//         textKo: '소식 2',
+//         userId: 'id2'
+//     },
+//     {
+//         messageId: 3,
+//         date: new Date("2024-07-05T03:26:00"),
+//         status: 'sent',
+//         text: 'Tin nhan 3',
+//         textVi: 'Tin nhan 3',
+//         textKo: '소식 3',
+//         userId: 'id1'
+//     },
+//     {
+//         messageId: 4,
+//         date: new Date("2024-07-05T03:27:00"),
+//         status: 'sent',
+//         text: 'Tin nhan 4',
+//         textVi: 'Tin nhan 4',
+//         textKo: '소식 4',
+//         userId: 'id2'
+//     },
+//     {
+//         messageId: 5,
+//         date: new Date("2024-07-05T03:26:00"),
+//         status: 'sent',
+//         text: 'Tin nhan 5',
+//         textVi: 'Tin nhan 5',
+//         textKo: '소식 5',
+//         userId: 'id1'
+//     },
+//     {
+//         messageId: 6,
+//         date: new Date("2024-07-05T03:27:00"),
+//         status: 'sent',
+//         text: 'Tin nhan 6',
+//         textVi: 'Tin nhan 6',
+//         textKo: '소식 6',
+//         userId: 'id2'
+//     }
+// ] 
 
 export const FAKE_USER_INFO: TUserLogin = {
     accessToken: "string",
@@ -180,7 +178,7 @@ export const FAKE_USER_INFO: TUserLogin = {
       userId: "id1",
       email: "1@gmail.com",
       nickname: "nickname1",
-      regionCountry: eRegion.VN,
+      regionCountry: eRegion.VI,
       username: "username1"
     }
   }

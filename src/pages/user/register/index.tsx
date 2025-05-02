@@ -22,16 +22,12 @@ export type TOptionType = {
   label: string
 }
 
-export const regions: TOptionType[] = [
-  {
-    value: eRegion.VN,
-    label: eRegion.VN,
-  },
-  {
-    value: eRegion.KR,
-    label: eRegion.KR,
-  },
-];
+export const regions: TOptionType[] = Object.entries(eRegion).map(([key, value]) => {
+  return {
+    value: key.toLowerCase(),
+    label: value,
+  }
+});
 
 const RegisterForm: React.FunctionComponent<IRegisterFormProps> = (props) => {
   const [isRegisterable, setIsRegisterable] = React.useState<boolean>(false)
@@ -166,7 +162,7 @@ const RegisterForm: React.FunctionComponent<IRegisterFormProps> = (props) => {
             options={regions}
             className='mt-[0.5rem] h-[3rem]'
             labelRender={(i) => {
-              return <Body3 className='text-[18px]'>{i.value}</Body3>
+              return <Body3 className='text-[18px]'>{i.label}</Body3>
             }}
             size='large'
           />

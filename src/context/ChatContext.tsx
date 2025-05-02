@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from 'react';
-import { TMessage, TMessageData, TMessageDesign, TUserInfo, TUserInfoDesign } from '../constants/types';
-import NoContent from '../pages/chat/NoContent';
-import ChatSession from '../pages/chat/ChatSession';
+import { TMessage, TMessageData, TUserInfoDesign } from '../constants/types';
 import { useNavigate } from 'react-router-dom';
-import { FAKE_MESSAGE, PAGE_CHAT_SESSION } from '../constants/constant';
+import { PAGE_CHAT_SESSION } from '../constants/constant';
 import ChatService from '../services/chatServices';
-import { AuthContext, useAuth } from './AuthContext';
+import { AuthContext } from './AuthContext';
 
 export interface IChatContext {
   selectedUser: TUserInfoDesign | null
@@ -29,7 +27,7 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
   const [liveMessageDesign, setLiveMessageDesign] = React.useState<TMessage[]>([]);
   const [isReload, setIsReload] = React.useState<boolean>(false)
   const navigate = useNavigate();
-  const { userInfo } = React.useContext(AuthContext)!
+  const { userInfo } = React.useContext(AuthContext)!;
   React.useMemo(() => {
     if (messageData.length === 0 || userInfo === null) return
     const convertData = [] as TMessage[]
@@ -37,8 +35,8 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
       const temp = {
         data: m,
         design: {
-          title: userInfo!.user.nickname,
-          position: userInfo!.user.userId === m.userId ? "right" : "left"
+          title: userInfo?.user.nickname,
+          position: userInfo?.user.userId === m.userId ? "right" : "left"
         }
       } as TMessage
       convertData.push(temp)
@@ -63,9 +61,9 @@ export const ChatProvider: React.FC<{ children: React.ReactNode }> = ({
             messageId: m.id,
             date: new Date(),
             status: "received",
-            text: m.content,
+            textEn: m.contentEn,
             textVi: m.contentVi,
-            textKo: m.contentKo,
+            textJa: m.contentJa,
             userId: m.sender
           } as TMessageData
         })

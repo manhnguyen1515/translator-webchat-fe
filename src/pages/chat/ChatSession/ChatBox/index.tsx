@@ -1,24 +1,30 @@
 import * as React from 'react';
 import { Button, Input } from 'react-chat-elements';
 import { ChatContext } from '../../../../context/ChatContext';
-import { TMessage, TMessageResponse, TUserInfoDesign } from '../../../../constants/types';
+import { eRegion, TMessage, TMessageResponse, TUserInfoDesign } from '../../../../constants/types';
 import { AuthContext } from '../../../../context/AuthContext';
 import { WebSocketContext } from '../../../../context/WebSocketContext';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { IMessage } from '@stomp/stompjs';
+import ComponentService from '../../../../services/shared/componentService';
 
 interface IChatBoxProps {
   selectedUser: TUserInfoDesign;
 }
 const ChatBox: React.FunctionComponent<IChatBoxProps> = (props) => {
-  const { setLiveMessageDesign, liveMessageDesign } = React.useContext(ChatContext)!
+  const { setLiveMessageDesign } = React.useContext(ChatContext)!
   const { userInfo } = React.useContext(AuthContext)!;
   const { wsClient, isWsConnected } = React.useContext(WebSocketContext)!;
   const [value, setValue] = React.useState<string>();
   const params = useParams();
   const { sessionId } = params;
   const { selectedUser } = props;
-  const ref = React.useRef<HTMLInputElement>(null)
+  const ref = React.useRef<HTMLInputElement>(null);
+  const [searchParams] = useSearchParams();
+  const regionValue = selectedUser?.user.regionCountry;
+  const language = searchParams.get('language');
+  const regionKey = Object.entries(eRegion).find(([_, value]) => value === regionValue)?.[0]?.toLowerCase();
+  const region = language || regionKey || 'en';
 
   let onClear = () => {
     if (ref.current) {
@@ -37,6 +43,7 @@ const ChatBox: React.FunctionComponent<IChatBoxProps> = (props) => {
           recipient: selectedUser.user.username,
           sessionId: sessionId,
           content: value,
+          language: region
         })
       });
 
@@ -45,7 +52,9 @@ const ChatBox: React.FunctionComponent<IChatBoxProps> = (props) => {
           date: new Date(),
           messageId: userInfo?.user.userId,
           status: 'waiting',
-          text: value,
+          textEn: value,
+          // textVi: value,
+          // textJa: value,
           userId: userInfo?.user.userId
         },
         design: {
@@ -73,9 +82,9 @@ const ChatBox: React.FunctionComponent<IChatBoxProps> = (props) => {
             date: messageReponse.createdAt,
             messageId: messageReponse.id,
             status: 'sent',
-            text: messageReponse.content,
+            textEn: messageReponse.contentEn,
             textVi: messageReponse.contentVi,
-            textKo: messageReponse.contentKo,
+            textJa: messageReponse.contentJa,
             userId: userInfo?.user.userId
           },
           design: {
@@ -101,9 +110,9 @@ const ChatBox: React.FunctionComponent<IChatBoxProps> = (props) => {
             date: messageReponse.createdAt,
             messageId: messageReponse.id,
             status: 'received',
-            text: messageReponse.content,
+            textEn: messageReponse.contentEn,
             textVi: messageReponse.contentVi,
-            textKo: messageReponse.contentKo,
+            textJa: messageReponse.contentJa,
             userId: selectedUser.user.userId
           },
           design: {

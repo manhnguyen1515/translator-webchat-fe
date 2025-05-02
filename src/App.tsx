@@ -12,21 +12,26 @@ import Layout from "./components/common/Layout/Layout";
 import { ChatProvider } from "./context/ChatContext";
 import ChangePwEmail from "./pages/user/changePassword/email";
 import ChangeNewPw from "./pages/user/changePassword/newPw";
+import ProtectedContext from "./context/ProtectedContext";
 
 export default function App() {
-  let routes: RouteObject[] = [
+  const privateRoutes: RouteObject[] = [
     {
       path: PAGE_TEST,
-      element: <TestPage />,
+      element: <ProtectedContext><TestPage /></ProtectedContext>,
     },
     {
       path: PAGE_DEFAULT,
       element:
+      <ProtectedContext>
         <Layout>
           <ChatFrame />
         </Layout>
+      </ProtectedContext>
       ,
     },
+  ];
+  const publicRoutes: RouteObject[] = [
     {
       path: PAGE_SIGN_IN,
       element: <LoginPage Element={LoginForm} title={LOGIN_TITLE} subtitle={LOGIN_SUBTITLE} />,
@@ -44,11 +49,11 @@ export default function App() {
       element: <LoginPage Element={ChangeNewPw} title={CHANGE_PW_NEW_TITLE} subtitle={CHANGE_PW_NEW_SUBTITLE} />,
     },
   ];
-  let element = useRoutes(routes);
+  const elements = useRoutes([...publicRoutes, ...privateRoutes]);
   return <>
     <AuthProvider>
       <ChatProvider>
-        {element}
+        {elements}
       </ChatProvider>
     </AuthProvider>
   </>;
